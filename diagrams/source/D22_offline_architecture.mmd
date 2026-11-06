@@ -1,0 +1,16 @@
+%% BillKit — D22 offline architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  subgraph Offline["Works offline"]
+    SW["Service worker: app shell + static assets"]
+    C["Previously viewed bills / lists / analytics from IndexedDB\n(marked 'offline copy')"]
+  end
+  subgraph Online["Needs connection to BillKit server"]
+    S["Scanning, OCR, extraction, validation"]
+    SV["Saving, editing, deleting"]
+    AU["Sign-in"]
+  end
+  subgraph Internet["Needs internet on the server"]
+    V["Optional cloud vision model"]
+    M["Optional SMTP email"]
+  end
+  Note["The server's OCR works with no internet (model bundled via npm)"]

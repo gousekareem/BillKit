@@ -1,0 +1,37 @@
+%% BillKit — D25 technology stack · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TB
+  subgraph FE["Client — website/ (PWA)"]
+    F1["React 19 · TypeScript · Vite 8"]
+    F2["React Router 8 · lucide-react · Inter (self-hosted)"]
+    F3["Service worker · IndexedDB offline cache"]
+  end
+  subgraph SH["Shared — packages/shared"]
+    S1["zod 4 schemas · normalisation · validation"]
+  end
+  subgraph BE["Server — backend/"]
+    B1["Node.js 22 · Fastify 5"]
+    B2["helmet · cookie · multipart · rate-limit · static"]
+    B3["Argon2id (@node-rs/argon2) · hashed sessions"]
+    B4[("SQLite (better-sqlite3, WAL)")]
+    B5[("Local image storage")]
+  end
+  subgraph AIP["AI pipeline — ai/"]
+    A1["sharp · heic-convert · pdfjs-dist"]
+    A2["tesseract.js 7 (Tesseract LSTM, eng)"]
+    A3["Evidence classifier · rule extraction · TF-IDF+LR categoriser"]
+    A4[["Optional: Anthropic Messages API (tool use)"]]
+  end
+  subgraph PY["Offline — training/"]
+    P1["Python 3 · scikit-learn · numpy · Pillow · PyYAML"]
+    P2["PyTorch/torchvision (classifier, optional) · ONNX export"]
+  end
+  subgraph QA["Quality"]
+    Q1["Vitest · Testing Library · Playwright · axe-core · pytest"]
+    Q2["ESLint · tsc · npm audit · esbuild"]
+  end
+  FE -->|HTTPS /api| BE
+  FE --- SH
+  BE --- SH
+  BE --> AIP
+  AIP --- SH
+  PY -->|exported models + registry.json| AIP

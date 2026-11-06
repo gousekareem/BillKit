@@ -1,0 +1,26 @@
+%% BillKit — D01 overall architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  subgraph Client["Browser / installed PWA (React + TypeScript)"]
+    CAM["Camera / gallery / drag-drop"] --> UP["Upload page"]
+    REV["Review & correct"]
+    HIST["Bill history / analytics"]
+    IDB[("IndexedDB offline copies")]
+  end
+  subgraph Server["BillKit server (Node.js · Fastify)"]
+    API["REST API /api/*\nauth · CSRF · rate limits"]
+    Q["Processing queue"]
+    subgraph AI["AI pipeline (@billkit/ai)"]
+      QA["Quality assessment"] --> PRE["Preprocessing"] --> OCR["Tesseract OCR"] --> CLS["Bill classifier\nevidence rules"] --> EXT["Extraction rules"] --> CAT["Categoriser\nrules + TF-IDF model"] --> VAL["Validation"] --> CONF["Confidence"]
+    end
+    DB[("SQLite\nusers · bills · corrections · job_metrics")]
+    FS[("Image storage\nlocal disk, UUID paths")]
+    MON["Operational metrics\n(no bill content)"]
+  end
+  VLM[["Anthropic vision model\noptional, opt-in"]]
+  UP -->|multipart upload| API --> Q --> QA
+  EXT -.->|only if configured & allowed| VLM -.-> CAT
+  API <--> DB
+  API <--> FS
+  Q --> MON --> DB
+  API -->|JSON result| REV -->|approved values| API
+  API --> HIST --> IDB

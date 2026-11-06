@@ -1,0 +1,11 @@
+# OCR evaluation configuration. BillKit uses Tesseract (tesseract.js 7, LSTM) — it is evaluated, not trained.
+engine: tesseract.js-7
+languages: [eng]
+page_segmentation_mode: 4      # single column of variable-sized text (see ai/src/ocr.ts)
+normalisation:
+  lowercase: true
+  collapse_whitespace: true
+  strip_punctuation: false
+metrics: [cer, wer]
+transcriptions_dir: dataset/annotations/layout/transcriptions   # <image_id>.txt reference text
+ocr_output_dir: evaluation/results/ocr_output                   # produced by evaluation/scripts/dump-ocr.ts

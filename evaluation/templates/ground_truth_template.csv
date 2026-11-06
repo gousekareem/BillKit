@@ -1,0 +1,2 @@
+image_id,file_name,expected_class,expected_document_type,expected_merchant,expected_date,expected_total,expected_currency,expected_category,difficulty,conditions,source,notes
+B01,B01.jpg,bill,grocery_receipt,Example Store,2026-10-20,1250.00,INR,Groceries,hard,"tilted; low light",personal capture (consented),EXAMPLE ROW — replace

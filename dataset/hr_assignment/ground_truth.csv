@@ -1,0 +1,21 @@
+image_id,file_name,expected_class,expected_document_type,expected_merchant,expected_date,expected_total,expected_currency,expected_category,difficulty,conditions,source,notes
+B01,B01.jpg,bill,,,,,,,,,,FILL IN — real bill 1
+B02,B02.jpg,bill,,,,,,,,,,FILL IN — real bill 2
+B03,B03.jpg,bill,,,,,,,,,,FILL IN — real bill 3
+B04,B04.jpg,bill,,,,,,,,,,FILL IN — real bill 4
+B05,B05.jpg,bill,,,,,,,,,,FILL IN — real bill 5
+B06,B06.jpg,bill,,,,,,,,,,FILL IN — real bill 6
+B07,B07.jpg,bill,,,,,,,,,,FILL IN — real bill 7
+B08,B08.jpg,bill,,,,,,,,,,FILL IN — real bill 8
+B09,B09.jpg,bill,,,,,,,,,,FILL IN — real bill 9
+B10,B10.jpg,bill,,,,,,,,,,FILL IN — real bill 10
+B11,B11.jpg,bill,,,,,,,,,,FILL IN — real bill 11
+B12,B12.jpg,bill,,,,,,,,,,FILL IN — real bill 12
+B13,B13.jpg,bill,,,,,,,,,,FILL IN — real bill 13
+B14,B14.jpg,bill,,,,,,,,,,FILL IN — real bill 14
+B15,B15.jpg,bill,,,,,,,,,,FILL IN — real bill 15
+N01,N01.jpg,non_bill,,,,,,,easy,,,FILL IN — non-bill 1 (e.g. selfie / ID card / screenshot)
+N02,N02.jpg,non_bill,,,,,,,easy,,,FILL IN — non-bill 2 (e.g. selfie / ID card / screenshot)
+N03,N03.jpg,non_bill,,,,,,,easy,,,FILL IN — non-bill 3 (e.g. selfie / ID card / screenshot)
+N04,N04.jpg,non_bill,,,,,,,easy,,,FILL IN — non-bill 4 (e.g. selfie / ID card / screenshot)
+N05,N05.jpg,non_bill,,,,,,,easy,,,FILL IN — non-bill 5 (e.g. selfie / ID card / screenshot)

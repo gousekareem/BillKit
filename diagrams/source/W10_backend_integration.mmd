@@ -1,0 +1,9 @@
+%% BillKit — W10 backend integration · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  subgraph Prod["Production: one origin"]
+    N["Fastify"] --> ST["@fastify/static website/dist + prerendered pages"]
+    N --> API["/api"]
+  end
+  subgraph Dev["Development"]
+    V["Vite dev server :5173"] -->|proxy /api| B["Fastify :8787"]
+  end

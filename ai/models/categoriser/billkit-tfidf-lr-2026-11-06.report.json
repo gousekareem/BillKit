@@ -1,0 +1,41 @@
+{
+  "model": "billkit-tfidf-lr-2026-11-06",
+  "task": "expense categorisation",
+  "architecture": "TF-IDF (word 1-2 grams, l2) + multinomial logistic regression (C=4)",
+  "training_examples": 324,
+  "classes": [
+    "Education",
+    "Entertainment",
+    "Food",
+    "Fuel",
+    "Groceries",
+    "Healthcare",
+    "Personal care",
+    "Shopping",
+    "Transportation",
+    "Travel",
+    "Utilities"
+  ],
+  "cv": "GroupKFold by template_id",
+  "cv_results": {
+    "keyword_rules": {
+      "accuracy": 0.9909,
+      "macro_f1": 0.9755,
+      "folds": 5
+    },
+    "logistic_regression": {
+      "accuracy": 0.9879,
+      "macro_f1": 0.9897,
+      "folds": 5
+    },
+    "multinomial_nb": {
+      "accuracy": 0.9906,
+      "macro_f1": 0.9722,
+      "folds": 5
+    }
+  },
+  "training_time_s": 0.23,
+  "hardware": "x86_64 / Python 3.13.18",
+  "caveat": "Cross-validation on template-generated text overestimates real-world performance. Re-train on reviewed real corrections.",
+  "created": "2026-11-06"
+}

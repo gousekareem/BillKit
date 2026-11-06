@@ -1,0 +1,22 @@
+# BillKit dataset configuration. Paths are relative to the repository root.
+dataset_root: dataset
+manifest: dataset/manifests/dataset_manifest.csv
+annotations_dir: dataset/annotations/complete_ground_truth
+excluded_dirs: [dataset/hr_assignment]   # HR evaluation images are NEVER used for training
+split:
+  seed: 20261106
+  train: 0.70
+  validation: 0.15
+  test: 0.15
+  group_by: document_group_id            # all photos of one physical bill stay in one split
+duplicates:
+  perceptual_hash_max_distance: 4
+# Configurable size targets (guidance only — diversity and label quality matter more than count).
+size_targets:
+  initial_development: {bills: 50, non_bills: 20}
+  prototype_evaluation: {bills: 100, non_bills: 50}
+  baseline_classification: {bills: 500, non_bills: 500}
+  ocr_evaluation: {bills: 200}
+  structured_extraction_evaluation: {bills: 300}
+  fine_tuning: {bills: 2000}
+  production_validation: {bills: 1000, non_bills: 500}

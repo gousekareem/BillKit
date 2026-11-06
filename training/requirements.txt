@@ -1,0 +1,6 @@
+# BillKit training & dataset tooling (CPU). Python 3.11+.
+numpy>=2.0,<3
+pillow>=11.0
+scikit-learn>=1.6,<2
+pyyaml>=6.0
+pytest>=8.0

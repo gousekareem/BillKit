@@ -1,0 +1,16 @@
+%% BillKit — D10 human in loop · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  A["Result ready"] --> B["Review screen\nimage + evidence boxes + fields + badges"]
+  B --> C{"Field flagged?\nNeeds review / Missing / Validation warning"}
+  C -- yes --> D["User edits value\nor uses alternative chip\nor ticks 'I checked this'"]
+  C -- no --> E["User may still edit"]
+  D --> F["State: You corrected / You confirmed"]
+  E --> F
+  F --> G{"All flagged key fields resolved\n(approval policy)"}
+  G -- no --> B
+  G -- yes --> H["Approve & save"]
+  H --> I["Server: re-validate · duplicate check · provenance per field"]
+  I --> J[("corrections table\nAI value · user value · versions\nreview_status = unreviewed\nconsent flag")]
+  I --> K[("bills table · verified")]
+  B -.->|Reprocess| L["New AI result"]
+  L -.->|never overwrites edited fields;\nshows 'AI now suggests …'| B

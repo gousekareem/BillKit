@@ -1,0 +1,8 @@
+%% BillKit — W02 frontend components · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  MAIN["main.tsx"] --> AP["AuthProvider"] --> TP["ToastProvider"] --> R["AppRoutes"]
+  R --> ML["MarketingLayout"] --> P1["Home · Features · How it works · Technology · Privacy · About · FAQ · Contact · Legal"]
+  R --> AU["Auth pages: Login · Register · Forgot · Reset"]
+  R --> AL["AppLayout: sidebar · topbar search · bottom nav · offline banner"]
+  AL --> P2["Dashboard · Scan · ScanDetail(Processing/Rejected/Review) · Bills · BillDetail · Analytics · Categories · Settings · Admin"]
+  P2 --> C["Components: ReviewBadge · Dialog · Form fields · Charts · Empty states · Camera/Crop dialogs"]

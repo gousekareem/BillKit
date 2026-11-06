@@ -1,0 +1,10 @@
+%% BillKit — W03 page navigation · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  H["/"] --> F["/features"] & HW["/how-it-works"] & T["/technology"] & PR["/privacy-security"] & AB["/about"] & FQ["/faq"] & CT["/contact"] & LG["/legal/*"]
+  H --> REG["/register"] --> DASH["/app"]
+  H --> LOG["/login"] --> DASH
+  LOG --> FP["/forgot-password"] --> RP["/reset-password"]
+  DASH --> SC["/app/scan"] --> SD["/app/scan/:id"] --> BD["/app/bills/:id"]
+  DASH --> BL["/app/bills"] --> BD
+  DASH --> AN["/app/analytics"] & CA["/app/categories"] & ST["/app/settings"]
+  ST -->|role=admin| AD["/app/admin"]

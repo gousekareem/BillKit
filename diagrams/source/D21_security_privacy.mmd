@@ -1,0 +1,20 @@
+%% BillKit — D21 security privacy · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  subgraph Device["User device"]
+    B["Browser"] --- IDB[("IndexedDB copy\ncleared on sign-out")]
+  end
+  subgraph Server["BillKit server boundary"]
+    API["API: CSRF header + Origin check · rate limits · zod · CSP"]
+    AU["Argon2id · hashed session tokens"]
+    DB[("SQLite · parameterised SQL")]
+    FS[("Images · UUID paths · 0600 files · owner-checked routes")]
+    LOG["Logs without cookies/bodies/bill text"]
+    ENV["Secrets in env only\nAI_PROVIDER_API_KEY · SMTP_PASS"]
+  end
+  EXT[["Anthropic — only downscaled image + OCR text,\nonly when configured AND user opted in"]]
+  B -->|HTTPS| API
+  API --> AU --> DB
+  API --> FS
+  API -.-> EXT
+  DEL["User deletion: bill → images, items, corrections\naccount → everything"] --> DB
+  DEL --> FS

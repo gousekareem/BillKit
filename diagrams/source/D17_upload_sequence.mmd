@@ -1,0 +1,25 @@
+%% BillKit — D17 upload sequence · © 2026 Shaik Gouse Kareem. All rights reserved.
+sequenceDiagram
+  actor U as User
+  participant W as Web app
+  participant A as API
+  participant Q as Queue
+  participant P as AI pipeline
+  participant D as SQLite / files
+  U->>W: capture / choose image (rotate, crop)
+  W->>A: POST /api/scans (multipart, XHR progress, cancellable)
+  A->>A: magic-byte check, size limit
+  A->>D: store original (UUID path) + scan row (queued)
+  A-->>W: 202 {id}
+  A->>Q: enqueue
+  loop every 700 ms
+    W->>A: GET /api/scans/:id
+    A-->>W: status + real stage
+  end
+  Q->>P: processDocument(files, options, onStage)
+  P->>D: stage updates (decoding … done)
+  P-->>Q: ExtractionResult + corrected pages + hashes
+  Q->>D: result_json, corrected images, job_metrics
+  W->>A: GET /api/scans/:id
+  A-->>W: completed + result + duplicate candidates
+  W-->>U: Review screen (or polite rejection)

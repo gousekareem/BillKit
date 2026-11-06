@@ -1,0 +1,10 @@
+%% BillKit — W08 bill review workflow · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  R["Result"] --> INIT["Pre-fill values from AI\ncurrency → user default if not printed"]
+  INIT --> SHOW["Field rows: badge · evidence · alternatives · confirm checkbox"]
+  SHOW --> LIVE["Live validateBill on every change"]
+  LIVE --> GATE{"Required present, flagged fields resolved,\nbill confirmed if ambiguous"}
+  GATE -- no --> SHOW
+  GATE -- yes --> SAVE["POST /api/bills"] --> DLG{"409?"}
+  DLG -- warnings/duplicate --> ACK["Dialog → acknowledge"] --> SAVE
+  DLG -- 201 --> DETAIL["Bill detail"]

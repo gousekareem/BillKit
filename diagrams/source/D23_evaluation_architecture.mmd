@@ -1,0 +1,10 @@
+%% BillKit — D23 evaluation architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  GT["ground_truth.csv\n(expected class, merchant, date, total, category)"] --> H
+  IMG["Labelled images"] --> H["run-evaluation.ts\nsame processDocument as the app"]
+  H --> CMP["Comparison rules\nnormalised merchant · ISO date · |Δtotal| ≤ 0.01 · category exact"]
+  CMP --> MET["Metrics\naccuracy · precision · recall · F1 · confusion · field accuracy · Wilson CI · latency · cost"]
+  CMP --> FA["Failure analysis\nfrom OCR text, field status, validation, quality issues"]
+  MET & FA --> OUT["predictions.csv · results.json · metrics.json · report.md"]
+  OUT --> CAL["calibrate.py\nECE · Brier · reliability → optional calibration table"]
+  NO{"images missing?"} -->|yes| PEND["PENDING report — no metrics"]

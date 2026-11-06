@@ -1,0 +1,39 @@
+{
+  "image_id": "rb_000123",
+  "document_class": "restaurant_bill",
+  "is_bill": true,
+  "annotation_status": "draft",
+  "annotator": "annotator_01",
+  "annotated_at": "2026-11-06",
+  "fields": {
+    "merchant_name": "Example Cafe",
+    "merchant_address": null,
+    "bill_date": "2026-10-20",
+    "bill_time": "19:42",
+    "invoice_number": "INV-0042",
+    "currency": "INR",
+    "subtotal": 380.00,
+    "tax": 19.00,
+    "discount": null,
+    "service_charge": null,
+    "tip": null,
+    "round_off": 0.50,
+    "total_amount": 399.50,
+    "payment_method": "UPI",
+    "category": "Food",
+    "subcategory": "Restaurant"
+  },
+  "boxes": {
+    "merchant_name": [0.10, 0.04, 0.62, 0.05],
+    "bill_date": [0.08, 0.15, 0.30, 0.03],
+    "total_amount": [0.55, 0.78, 0.37, 0.04]
+  },
+  "line_items": [
+    {"description": "Masala dosa", "quantity": 2, "unit_price": 120.00, "line_total": 240.00},
+    {"description": "Filter coffee", "quantity": 2, "unit_price": 70.00, "line_total": 140.00}
+  ],
+  "not_visible": [],
+  "conditions": ["low_light"],
+  "difficulty": "medium",
+  "notes": "EXAMPLE — fictional values. Boxes are [x, y, width, height] as fractions of the image."
+}

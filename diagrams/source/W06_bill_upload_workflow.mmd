@@ -1,0 +1,7 @@
+%% BillKit — W06 bill upload workflow · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  A["Drop / choose / camera"] --> B["Client checks: type, size, ≤5 pages, PDF alone"]
+  B --> C["Preview grid: rotate · crop · replace · remove"]
+  C --> D["Optional: allow cloud vision for this bill"]
+  D --> E["XHR upload with progress + cancel"]
+  E --> F["/app/scan/:id"]

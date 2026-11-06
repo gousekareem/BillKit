@@ -1,0 +1,15 @@
+%% BillKit — W14 security boundaries · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  subgraph Browser
+    JS["App JS — no secrets"]
+    CK["HttpOnly cookie — not readable by JS"]
+  end
+  subgraph Server
+    CSP["CSP: self only · frame-ancestors none"]
+    CSRF["CSRF header + Origin allow-list"]
+    AUTHZ["Ownership checks on every query"]
+    SEC["Env secrets"]
+  end
+  JS -->|same-origin fetch| CSRF --> AUTHZ
+  CK --> AUTHZ
+  SEC -.->|server-side only| EXT[["AI provider"]]

@@ -1,0 +1,5 @@
+# Optional: image classifier training (transfer learning). Large download (~1 GB for CPU torch).
+-r requirements.txt
+torch>=2.5
+torchvision>=0.20
+onnx>=1.17

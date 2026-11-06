@@ -1,0 +1,11 @@
+%% BillKit — D19 deployment architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  U["Users' browsers / PWA"] -->|HTTPS| RP["Reverse proxy / host TLS\n(e.g. Caddy, Nginx, platform)"]
+  RP --> N["Node.js 22 process\nbackend/dist/server.js\nserves API + website/dist"]
+  N --> DB[("SQLite file\nDATA_DIR/billkit.db")]
+  N --> FS[("DATA_DIR/uploads")]
+  N --> M["ai/models registry"]
+  N -.->|optional HTTPS| ANT[["Anthropic API"]]
+  N -.->|optional| SMTP[["SMTP server"]]
+  N --> LOGS["stdout JSON logs\n(redacted)"]
+  BK["Operator backups of DATA_DIR"] -.-> DB

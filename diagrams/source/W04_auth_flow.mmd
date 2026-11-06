@@ -1,0 +1,13 @@
+%% BillKit — W04 auth flow · © 2026 Shaik Gouse Kareem. All rights reserved.
+stateDiagram-v2
+  [*] --> Anonymous
+  Anonymous --> Registering: /register
+  Registering --> SignedIn: 201 + session cookie
+  Anonymous --> SigningIn: /login
+  SigningIn --> SignedIn: 200
+  SigningIn --> SigningIn: 401 generic error
+  Anonymous --> Resetting: /forgot-password
+  Resetting --> Anonymous: token used, sessions revoked
+  SignedIn --> Anonymous: Sign out (cookie cleared, IndexedDB cleared)
+  SignedIn --> Anonymous: Session expired → redirect /login?next=…
+  SignedIn --> [*]: Delete account

@@ -1,0 +1,50 @@
+{
+  "name": "billkit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BillKit — Every bill, in your pocket. AI-assisted bill and receipt intelligence. © 2026 Shaik Gouse Kareem. All rights reserved.",
+  "license": "UNLICENSED",
+  "author": "Shaik Gouse Kareem",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "workspaces": [
+    "packages/shared",
+    "ai",
+    "backend",
+    "website"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w backend & npm run dev -w website",
+    "dev:backend": "npm run dev -w backend",
+    "dev:website": "npm run dev -w website",
+    "build": "npm run build -w backend && npm run build -w website",
+    "start": "npm run start -w backend",
+    "test": "npm run test -w @billkit/shared -w @billkit/ai -w backend -w website",
+    "test:e2e": "npm run test:e2e -w website",
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck -w @billkit/shared -w @billkit/ai -w backend -w website",
+    "db:migrate": "npm run db:migrate -w backend",
+    "admin:grant": "npm run admin:grant -w backend --",
+    "eval:hr": "npm run eval:hr -w @billkit/ai --",
+    "eval:smoke": "npm run eval:smoke -w @billkit/ai",
+    "fixtures:synthetic": "npm run fixtures -w @billkit/ai",
+    "diagrams:render": "node diagrams/render.mjs",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  },
+  "overrides": {
+    "minimatch": "^11.0.5"
+  }
+}

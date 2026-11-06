@@ -1,0 +1,752 @@
+{
+  "metrics": {
+    "status": "measured",
+    "set": "synthetic-smoke",
+    "label": "SYNTHETIC smoke test — computer-generated fictional documents (NOT real-world accuracy)",
+    "generatedAt": "2026-11-06T13:16:49.813Z",
+    "images": 15,
+    "bills": 10,
+    "nonBills": 5,
+    "vlm": null,
+    "dateOrder": "DMY",
+    "classification": {
+      "accuracy": 1,
+      "ci95": [
+        0.796,
+        1
+      ],
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "tn": 5,
+      "ambiguous": 0,
+      "confusion": {
+        "bill": {
+          "bill": 10,
+          "non_bill": 0,
+          "ambiguous": 0,
+          "error": 0
+        },
+        "non_bill": {
+          "bill": 0,
+          "non_bill": 5,
+          "ambiguous": 0,
+          "error": 0
+        }
+      }
+    },
+    "fields": {
+      "merchant": {
+        "correct": 10,
+        "evaluated": 10,
+        "accuracy": 1,
+        "ci95": [
+          0.722,
+          1
+        ]
+      },
+      "date": {
+        "correct": 10,
+        "evaluated": 10,
+        "accuracy": 1,
+        "ci95": [
+          0.722,
+          1
+        ]
+      },
+      "total": {
+        "correct": 10,
+        "evaluated": 10,
+        "accuracy": 1,
+        "ci95": [
+          0.722,
+          1
+        ]
+      },
+      "category": {
+        "correct": 10,
+        "evaluated": 10,
+        "accuracy": 1,
+        "ci95": [
+          0.722,
+          1
+        ]
+      },
+      "allRequired": {
+        "correct": 10,
+        "evaluated": 10,
+        "accuracy": 1,
+        "ci95": [
+          0.722,
+          1
+        ]
+      }
+    },
+    "latencyMs": {
+      "mean": 1467,
+      "median": 1350,
+      "p95": 2582,
+      "max": 3274
+    },
+    "reviewBehaviour": {
+      "wrongValues": 0,
+      "wrongFlagged": 0,
+      "wrongAcceptedSilently": 0,
+      "wrongFlaggedRate": null,
+      "correctValues": 40,
+      "correctFlagged": 4,
+      "unnecessaryReviewRate": 0.1
+    },
+    "vlmCalls": 0,
+    "apiFailures": 0,
+    "estimatedCostUsd": null,
+    "definitions": {
+      "classificationAccuracy": "(correct bill/non-bill decisions) / images; ambiguous counts as incorrect",
+      "precision": "TP / (TP + FP), positive class = bill",
+      "recall": "TP / (TP + FN)",
+      "f1": "2PR / (P + R)",
+      "merchant": "normalised match: case/punctuation/legal-suffix insensitive, containment (≥4 chars) or similarity ≥ 0.85",
+      "date": "exact ISO date after normalising the ground truth",
+      "total": "absolute difference ≤ 0.01",
+      "category": "case-insensitive exact match; abstaining (Unknown) counts as incorrect",
+      "allRequired": "merchant, date and total all correct for a bill",
+      "ci95": "Wilson score interval",
+      "reviewBehaviour": "a value is \"flagged\" when its review state is anything other than high_confidence"
+    }
+  },
+  "rows": [
+    {
+      "image_id": "S01",
+      "file_name": "S01_syn_grocery_inr_photo_on_table.jpg",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "GREENLEAF FRESH MART",
+      "extracted_merchant": "GREENLEAF FRESH MART",
+      "merchant_correct": true,
+      "expected_date": "2026-10-14",
+      "extracted_date": "2026-10-14",
+      "date_correct": true,
+      "expected_total": "1275",
+      "extracted_total": "1275",
+      "total_correct": true,
+      "expected_category": "Groceries",
+      "predicted_category": "Groceries",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "ready_for_approval; merchant=high_confidence, date=high_confidence, total=high_confidence",
+      "quality_score": 81,
+      "processing_ms": 2582,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.91,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.92,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.99,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.96,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S02",
+      "file_name": "S02_syn_grocery_inr_shadow.png",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "GREENLEAF FRESH MART",
+      "extracted_merchant": "GREENLEAF FRESH MART",
+      "merchant_correct": true,
+      "expected_date": "2026-10-14",
+      "extracted_date": "2026-10-14",
+      "date_correct": true,
+      "expected_total": "1275",
+      "extracted_total": "1275",
+      "total_correct": true,
+      "expected_category": "Groceries",
+      "predicted_category": "Groceries",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "ready_for_approval; merchant=high_confidence, date=high_confidence, total=high_confidence",
+      "quality_score": 62,
+      "processing_ms": 2323,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.91,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.92,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.99,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.96,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S03",
+      "file_name": "S03_syn_restaurant_inr_perspective.jpg",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "SPICE COURTYARD RESTAURANT",
+      "extracted_merchant": "SPICE COURTYARD RESTAURANT",
+      "merchant_correct": true,
+      "expected_date": "2026-10-05",
+      "extracted_date": "2026-10-05",
+      "date_correct": true,
+      "expected_total": "1452",
+      "extracted_total": "1452",
+      "total_correct": true,
+      "expected_category": "Food",
+      "predicted_category": "Food",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "needs_review; merchant=high_confidence, date=needs_review, total=high_confidence",
+      "quality_score": 77,
+      "processing_ms": 1734,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.91,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.78,
+          "review": "needs_review",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.97,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.89,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S04",
+      "file_name": "S04_syn_restaurant_inr_blur.png",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "SPICE COURTYARD RESTAURANT",
+      "extracted_merchant": "SPICE COURTYARD RESTAURANT",
+      "merchant_correct": true,
+      "expected_date": "2026-10-05",
+      "extracted_date": "2026-10-05",
+      "date_correct": true,
+      "expected_total": "1452",
+      "extracted_total": "1452",
+      "total_correct": true,
+      "expected_category": "Food",
+      "predicted_category": "Food",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "needs_review; merchant=high_confidence, date=needs_review, total=high_confidence",
+      "quality_score": 70,
+      "processing_ms": 1418,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.91,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.78,
+          "review": "needs_review",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.96,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.89,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S05",
+      "file_name": "S05_syn_electricity_inr_clean.png",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "COASTAL POWER DISTRIBUTION LTD",
+      "extracted_merchant": "COASTAL POWER DISTRIBUTION LTD",
+      "merchant_correct": true,
+      "expected_date": "2026-10-02",
+      "extracted_date": "2026-10-02",
+      "date_correct": true,
+      "expected_total": "1596",
+      "extracted_total": "1596",
+      "total_correct": true,
+      "expected_category": "Utilities",
+      "predicted_category": "Utilities",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "ready_for_approval; merchant=high_confidence, date=high_confidence, total=high_confidence",
+      "quality_score": 100,
+      "processing_ms": 747,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.91,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.93,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.96,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.94,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S06",
+      "file_name": "S06_syn_electricity_inr_rotated_90.png",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "COASTAL POWER DISTRIBUTION LTD",
+      "extracted_merchant": "COASTAL POWER DISTRIBUTION LTD",
+      "merchant_correct": true,
+      "expected_date": "2026-10-02",
+      "extracted_date": "2026-10-02",
+      "date_correct": true,
+      "expected_total": "1596",
+      "extracted_total": "1596",
+      "total_correct": true,
+      "expected_category": "Utilities",
+      "predicted_category": "Utilities",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "ready_for_approval; merchant=high_confidence, date=high_confidence, total=high_confidence",
+      "quality_score": 96,
+      "processing_ms": 3274,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.91,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.93,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.96,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.94,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S07",
+      "file_name": "S07_syn_cafe_usd_noisy_jpeg.jpg",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "NORTHWIND COFFEE CO.",
+      "extracted_merchant": "NORTHWIND COFFEE CO.",
+      "merchant_correct": true,
+      "expected_date": "2026-10-03",
+      "extracted_date": "2026-10-03",
+      "date_correct": true,
+      "expected_total": "17.08",
+      "extracted_total": "17.08",
+      "total_correct": true,
+      "expected_category": "Food",
+      "predicted_category": "Food",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "needs_review; merchant=high_confidence, date=needs_review, total=high_confidence",
+      "quality_score": 100,
+      "processing_ms": 1350,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.9,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.64,
+          "review": "needs_review",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.92,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.94,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S08",
+      "file_name": "S08_syn_cafe_usd_rotated_6.png",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "NORTHWIND COFFEE CO.",
+      "extracted_merchant": "NORTHWIND COFFEE CO.",
+      "merchant_correct": true,
+      "expected_date": "2026-10-03",
+      "extracted_date": "2026-10-03",
+      "date_correct": true,
+      "expected_total": "17.08",
+      "extracted_total": "17.08",
+      "total_correct": true,
+      "expected_category": "Food",
+      "predicted_category": "Food",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "needs_review; merchant=high_confidence, date=needs_review, total=high_confidence",
+      "quality_score": 96,
+      "processing_ms": 782,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.9,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.64,
+          "review": "needs_review",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.92,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.94,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S09",
+      "file_name": "S09_syn_pharmacy_inr_dark.png",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "CAREWELL PHARMACY",
+      "extracted_merchant": "CAREWELL PHARMACY",
+      "merchant_correct": true,
+      "expected_date": "2026-09-28",
+      "extracted_date": "2026-09-28",
+      "date_correct": true,
+      "expected_total": "324",
+      "extracted_total": "324",
+      "total_correct": true,
+      "expected_category": "Healthcare",
+      "predicted_category": "Healthcare",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "ready_for_approval; merchant=high_confidence, date=high_confidence, total=high_confidence",
+      "quality_score": 100,
+      "processing_ms": 989,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.9,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.93,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.93,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.93,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S10",
+      "file_name": "S10_syn_pharmacy_inr_low_res.png",
+      "expected_class": "bill",
+      "predicted_class": "bill",
+      "classification_correct": true,
+      "expected_merchant": "CAREWELL PHARMACY",
+      "extracted_merchant": "CAREWELL PHARMACY",
+      "merchant_correct": true,
+      "expected_date": "2026-09-28",
+      "extracted_date": "2026-09-28",
+      "date_correct": true,
+      "expected_total": "324",
+      "extracted_total": "324",
+      "total_correct": true,
+      "expected_category": "Healthcare",
+      "predicted_category": "Healthcare",
+      "category_correct": true,
+      "all_required_correct": true,
+      "uncertainty_status": "ready_for_approval; merchant=high_confidence, date=high_confidence, total=high_confidence",
+      "quality_score": 85,
+      "processing_ms": 427,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {
+        "merchantName": {
+          "confidence": 0.9,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "billDate": {
+          "confidence": 0.93,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "totalAmount": {
+          "confidence": 0.93,
+          "review": "high_confidence",
+          "correct": true
+        },
+        "category": {
+          "confidence": 0.93,
+          "review": "high_confidence",
+          "correct": true
+        }
+      },
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S11",
+      "file_name": "S11_nonbill_selfie_or_photo.jpg",
+      "expected_class": "non_bill",
+      "predicted_class": "non_bill",
+      "classification_correct": true,
+      "expected_merchant": "",
+      "extracted_merchant": "",
+      "merchant_correct": null,
+      "expected_date": "",
+      "extracted_date": "",
+      "date_correct": null,
+      "expected_total": "",
+      "extracted_total": "",
+      "total_correct": null,
+      "expected_category": "",
+      "predicted_category": "",
+      "category_correct": null,
+      "all_required_correct": null,
+      "uncertainty_status": "rejected_not_bill; merchant=missing, date=missing, total=missing",
+      "quality_score": 81,
+      "processing_ms": 2146,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {},
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S12",
+      "file_name": "S12_nonbill_id_card.png",
+      "expected_class": "non_bill",
+      "predicted_class": "non_bill",
+      "classification_correct": true,
+      "expected_merchant": "",
+      "extracted_merchant": "",
+      "merchant_correct": null,
+      "expected_date": "",
+      "extracted_date": "",
+      "date_correct": null,
+      "expected_total": "",
+      "extracted_total": "",
+      "total_correct": null,
+      "expected_category": "",
+      "predicted_category": "",
+      "category_correct": null,
+      "all_required_correct": null,
+      "uncertainty_status": "rejected_not_bill; merchant=missing, date=missing, total=missing",
+      "quality_score": 85,
+      "processing_ms": 573,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {},
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S13",
+      "file_name": "S13_nonbill_chat_or_app_screenshot.png",
+      "expected_class": "non_bill",
+      "predicted_class": "non_bill",
+      "classification_correct": true,
+      "expected_merchant": "",
+      "extracted_merchant": "",
+      "merchant_correct": null,
+      "expected_date": "",
+      "extracted_date": "",
+      "date_correct": null,
+      "expected_total": "",
+      "extracted_total": "",
+      "total_correct": null,
+      "expected_category": "",
+      "predicted_category": "",
+      "category_correct": null,
+      "all_required_correct": null,
+      "uncertainty_status": "rejected_not_bill; merchant=missing, date=missing, total=missing",
+      "quality_score": 70,
+      "processing_ms": 1746,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {},
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S14",
+      "file_name": "S14_nonbill_letter_or_form.png",
+      "expected_class": "non_bill",
+      "predicted_class": "non_bill",
+      "classification_correct": true,
+      "expected_merchant": "",
+      "extracted_merchant": "",
+      "merchant_correct": null,
+      "expected_date": "",
+      "extracted_date": "",
+      "date_correct": null,
+      "expected_total": "",
+      "extracted_total": "",
+      "total_correct": null,
+      "expected_category": "",
+      "predicted_category": "",
+      "category_correct": null,
+      "all_required_correct": null,
+      "uncertainty_status": "rejected_not_bill; merchant=missing, date=missing, total=missing",
+      "quality_score": 85,
+      "processing_ms": 566,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {},
+      "failure_reason": ""
+    },
+    {
+      "image_id": "S15",
+      "file_name": "S15_nonbill_blank_page.png",
+      "expected_class": "non_bill",
+      "predicted_class": "non_bill",
+      "classification_correct": true,
+      "expected_merchant": "",
+      "extracted_merchant": "",
+      "merchant_correct": null,
+      "expected_date": "",
+      "extracted_date": "",
+      "date_correct": null,
+      "expected_total": "",
+      "extracted_total": "",
+      "total_correct": null,
+      "expected_category": "",
+      "predicted_category": "",
+      "category_correct": null,
+      "all_required_correct": null,
+      "uncertainty_status": "rejected_not_bill; merchant=missing, date=missing, total=missing",
+      "quality_score": 65,
+      "processing_ms": 1344,
+      "vlm_used": false,
+      "vlm_error": "",
+      "cost_usd": null,
+      "field_confidence": {},
+      "failure_reason": ""
+    }
+  ]
+}

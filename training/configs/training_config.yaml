@@ -1,0 +1,14 @@
+# Which training tasks are justified (see training/README.md).
+tasks:
+  categorisation:
+    enabled: true
+    config: training/configs/categorisation_config.yaml
+  classification:
+    enabled: false        # requires a licensed, labelled image dataset + torch (requirements-classifier.txt)
+    config: training/configs/classification_config.yaml
+  ocr:
+    enabled: false        # established engine is used; fine-tuning not justified without a large labelled set
+  extraction:
+    enabled: false        # LLM/layout-model fine-tuning not justified for this project size
+experiment_log: training/experiments/experiment_log.csv
+model_registry: ai/models/registry.json

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="300" viewBox="0 0 420 300" role="img" aria-label="BillKit — Every bill, in your pocket.">
+  <g transform="translate(162 20) scale(1.5)"><rect width="64" height="64" rx="15" fill="#0F766E"/>
+  <path d="M21 9h22a3 3 0 0 1 3 3v30H18V12a3 3 0 0 1 3-3z" fill="#FFFFFF"/>
+  <rect x="23.5" y="15" width="17" height="3.2" rx="1.6" fill="#99F6E4"/>
+  <rect x="23.5" y="21.5" width="12" height="3.2" rx="1.6" fill="#99F6E4"/>
+  <rect x="23.5" y="28" width="17" height="3.2" rx="1.6" fill="#0F766E" opacity="0.55"/>
+  <path d="M11 33h42v12c0 6.1-4.9 11-11 11H22c-6.1 0-11-4.9-11-11V33z" fill="#134E4A"/>
+  <path d="M15 37.5h34" stroke="#99F6E4" stroke-width="1.6" stroke-dasharray="3 2.6" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="45" cy="46" r="7.5" fill="#F59E0B"/>
+  <path d="M41.6 46.2l2.4 2.4 4.6-4.9" fill="none" stroke="#0B1F2A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="210" y="190" text-anchor="middle" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="56" font-weight="800" letter-spacing="-1.5" fill="#0B1F2A">Bill<tspan fill="#0F766E">Kit</tspan></text>
+  <text x="210" y="232" text-anchor="middle" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="500" fill="#475569">Every bill, in your pocket.</text></svg>

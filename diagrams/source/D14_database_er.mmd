@@ -1,0 +1,25 @@
+%% BillKit — D14 database er · © 2026 Shaik Gouse Kareem. All rights reserved.
+erDiagram
+  USERS ||--o{ SESSIONS : has
+  USERS ||--o{ PASSWORD_RESETS : requests
+  USERS ||--o{ CATEGORIES : defines
+  USERS ||--o{ SCANS : uploads
+  USERS ||--o{ BILLS : owns
+  USERS ||--o{ CORRECTIONS : makes
+  SCANS ||--o| BILLS : "saved as"
+  SCANS ||--o{ BILL_IMAGES : has
+  BILLS ||--o{ BILL_IMAGES : shows
+  BILLS ||--o{ LINE_ITEMS : contains
+  BILLS ||--o{ CORRECTIONS : records
+  SCANS ||--o{ JOB_METRICS : measured_by
+  USERS { text id PK  text email UK  text password_hash  text role  text settings_json }
+  SESSIONS { text id PK "sha256(token)"  text user_id FK  text expires_at }
+  SCANS { text id PK  text status  text stage  text result_json "ExtractionResult"  text error_code }
+  BILLS { text id PK  text merchant_name  text bill_date  real total_amount  text currency  text category  text provenance_json  text ai_snapshot_json }
+  LINE_ITEMS { text id PK  text bill_id FK  text description  real quantity  real unit_price  real line_total }
+  BILL_IMAGES { text id PK  text kind "original|corrected"  text rel_path  text sha256  text perceptual_hash }
+  CORRECTIONS { text id PK  text field  text ai_value  text user_value  text phase  int consent_for_improvement  text review_status }
+  JOB_METRICS { text id PK  text outcome  int total_ms  text vlm_model  int input_tokens  real cost_usd }
+  CATEGORIES { text id PK  text user_id FK  text name }
+  PASSWORD_RESETS { text token_hash PK  text user_id FK  text expires_at }
+  CONTACT_MESSAGES { text id PK  text subject  text delivered }

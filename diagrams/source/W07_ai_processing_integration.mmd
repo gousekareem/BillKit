@@ -1,0 +1,11 @@
+%% BillKit — W07 ai processing integration · © 2026 Shaik Gouse Kareem. All rights reserved.
+sequenceDiagram
+  participant UI as ScanDetail
+  participant API
+  UI->>API: GET /api/scans/:id
+  API-->>UI: {status: processing, stage: ocr}
+  UI->>UI: render stage list (done / current / pending)
+  UI->>API: POST /api/scans/:id/cancel (optional)
+  UI->>API: GET /api/scans/:id
+  API-->>UI: {status: completed, result}
+  UI->>UI: Rejected view if !isBill · Review view otherwise

@@ -1,0 +1,16 @@
+{
+  "format": "billkit-model-registry/1",
+  "active": {
+    "categoriser": "categoriser/billkit-tfidf-lr-2026-11-06.json"
+  },
+  "models": [
+    {
+      "task": "categoriser",
+      "version": "billkit-tfidf-lr-2026-11-06",
+      "file": "categoriser/billkit-tfidf-lr-2026-11-06.json",
+      "report": "categoriser/billkit-tfidf-lr-2026-11-06.report.json",
+      "created": "2026-11-06",
+      "trained_on": "324 SYNTHETIC template examples (training/categorisation/data/seed_examples.csv); not real bills"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+%% BillKit — D02 ai ml architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  A["Uploaded file(s)"] --> B["G1 Decode\nmagic bytes · EXIF orientation · HEIC→JPEG · PDF pages/text layer"]
+  B --> C["G2 Quality\nLaplacian variance · brightness · glare · lighting · resolution · skew · cropping"]
+  C --> D["G3 Preprocess\nOtsu mask → document quad → homography → deskew → shadow flattening → contrast"]
+  D --> E{"PDF text layer?"}
+  E -- yes --> F1["Use embedded text\nconfidence 1.0"]
+  E -- no --> F2["G5 OCR Tesseract LSTM (PSM 4)\nwords · boxes · confidences · auto-rotation search"]
+  F1 --> G["G6 Layout\nrows · header/items/totals/footer · key-values · table header"]
+  F2 --> G
+  G --> H["G4 Classification\nbill vocabulary · money rows · dates vs ID/chat/letter/photo signals"]
+  H -->|not bill| R["Polite rejection\nuser may override"]
+  H -->|bill / ambiguous| I["G7 Rule extraction\nlabelled amounts · dates · merchant · ids · line items + evidence"]
+  I --> J{"G11/G12 VLM allowed AND\n(mode=always OR ambiguous OR weak required fields)?"}
+  J -- yes --> K["Vision-language model\nstrict tool schema · untrusted-data prompt"]
+  J -- no --> L
+  K --> L["Evidence-aware merge\nagree / disagree / model-only (verified in OCR?)"]
+  L --> M["G8 Categorise\nlexicon rules + TF-IDF LR (registry) + VLM hint"]
+  M --> N["G10 Validate\narithmetic interpretations · dates · currency · items"]
+  N --> O["G9 Confidence\nheuristic score · calibration table if registered · review states"]
+  O --> P["Review-ready result\nschema billkit.extraction/1.0"]
+  P --> Q["G13 Human review → approved values → verified bill"]

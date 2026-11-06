@@ -1,0 +1,6 @@
+%% BillKit — W12 deployment · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  DEVL["Developer"] -->|npm run build| ART["backend/dist/server.js + website/dist"]
+  ART --> HOST["Linux host / container\nNode 22 · DATA_DIR volume"]
+  HOST --> TLS["TLS terminator"]
+  TLS --> WWW["Users"]

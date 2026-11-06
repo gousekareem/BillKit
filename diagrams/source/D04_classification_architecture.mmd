@@ -1,0 +1,19 @@
+%% BillKit — D04 classification architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  I["Image"] --> T["Image traits\ncolourfulness · skin-tone fraction · aspect ratio · screenshot traits"]
+  I --> O["OCR rows"]
+  O --> BV["Bill evidence\nstrong/medium/weak vocabulary · money rows · dates"]
+  O --> NV["Non-bill evidence\nID card · certificate · letter/form · chat · newspaper"]
+  T --> FEW{"< 5 readable words?"}
+  FEW -- yes --> PH["selfie_or_photo / blank_page / unknown"]
+  FEW -- no --> SC["billScore = evidence × (1 − 0.75 × top non-bill score)"]
+  BV --> SC
+  NV --> SC
+  SC --> D1{"≥ 0.5"}
+  D1 -- yes --> BILL["Bill + subtype\nutility / restaurant / grocery / invoice / screenshot"]
+  D1 -- no --> D2{"≤ 0.22"}
+  D2 -- yes --> REJ["Not a bill + reason"]
+  D2 -- no --> AMB["Ambiguous"]
+  AMB --> VLM{"VLM available & allowed?"}
+  VLM -- yes, self-confidence ≥ 0.6 --> RES["Resolved by VLM"]
+  VLM -- no --> MAN["Manual confirmation"]

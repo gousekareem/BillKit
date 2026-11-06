@@ -1,0 +1,20 @@
+%% BillKit — D20 error recovery · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  U["Upload"] --> V{"Validation"}
+  V -- bad type/size/corrupt --> E1["4xx with clear message"]
+  V -- ok --> P["Pipeline"]
+  P --> C{"Cancelled?"}
+  C -- yes --> E2["status cancelled · retry or discard"]
+  P --> OCR{"OCR error"}
+  OCR -- yes --> E3["status failed: ocr_failed · Try again"]
+  P --> VLM{"VLM call"}
+  VLM -->|429 / 5xx / network| RT["Retry with exponential backoff + jitter\nRetry-After honoured · max 2 retries"]
+  RT -->|still failing| FB["Fallback: OCR-rules result\n+ 'vision cross-check skipped' notice"]
+  VLM -->|401/403| FB
+  VLM -->|schema-invalid JSON| FB
+  VLM -->|timeout| RT
+  P --> CR{"Server restart mid-job"}
+  CR --> E4["On boot: processing → failed 'interrupted'; queued → re-queued"]
+  P --> OK["Result → review"]
+  OK --> SAVE{"Save"}
+  SAVE -->|DB error| E5["500 generic message + requestId · nothing partially saved (transaction)"]

@@ -1,0 +1,10 @@
+%% BillKit — D13 model deployment · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  E["Exported artefact\nJSON / ONNX"] --> H["sha256 + report"]
+  H --> R["register_model.py\nai/models/registry.json"]
+  R --> T["Run tests + synthetic smoke eval\n+ HR eval if images present"]
+  T --> OK{"Pass?"}
+  OK -- no --> RB["register_model.py --rollback"]
+  OK -- yes --> RS["Restart backend → loads active model"]
+  RS --> MON["Monitor job_metrics\nversions · errors · corrections by field"]
+  MON -->|regression| RB

@@ -1,0 +1,24 @@
+%% BillKit — D18 review save sequence · © 2026 Shaik Gouse Kareem. All rights reserved.
+sequenceDiagram
+  actor U as User
+  participant W as Review UI
+  participant A as API
+  participant D as SQLite
+  W->>W: live validation (shared rules)
+  U->>W: edit / confirm flagged fields
+  U->>W: Approve & save
+  W->>A: POST /api/bills {scanId, fields, confirmedFields, acknowledge*}
+  A->>A: zod + validateBill(approved values)
+  alt invalid values
+    A-->>W: 422 validation_failed
+  else warnings not acknowledged
+    A-->>W: 409 validation_warnings
+    U->>W: Save anyway
+    W->>A: POST … acknowledgeWarnings=true
+  else possible duplicate
+    A-->>W: 409 possible_duplicate (+ matches)
+    U->>W: Save both
+  end
+  A->>D: INSERT bill, line_items, corrections (diff vs AI), link images
+  A-->>W: 201 bill (with per-field provenance)
+  W-->>U: Bill detail page

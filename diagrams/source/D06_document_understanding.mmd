@@ -1,0 +1,13 @@
+%% BillKit — D06 document understanding · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  W["OCR words"] --> R["Visual rows"]
+  R --> AM["Money token finder\nmasks dates, times, %, phones, #ids"]
+  R --> TH["Table header detection\n≥ 2 of item/qty/rate/amount/…"]
+  R --> TS["Totals start\nfirst Total-like row with amount"]
+  TH --> RG["Regions: header · items · totals · footer"]
+  TS --> RG
+  R --> KV["Key-value rows 'Label: value'"]
+  AM --> IT["Item rows = items region rows with amounts\nexcluding phone/date/table/consumer rows"]
+  RG --> OUT["LayoutAnalysis with row → word → bbox links"]
+  KV --> OUT
+  IT --> OUT

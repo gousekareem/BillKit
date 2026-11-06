@@ -1,0 +1,118 @@
+{
+  "status": "measured",
+  "set": "synthetic-smoke",
+  "label": "SYNTHETIC smoke test — computer-generated fictional documents (NOT real-world accuracy)",
+  "generatedAt": "2026-11-06T13:16:49.813Z",
+  "images": 15,
+  "bills": 10,
+  "nonBills": 5,
+  "vlm": null,
+  "dateOrder": "DMY",
+  "classification": {
+    "accuracy": 1,
+    "ci95": [
+      0.796,
+      1
+    ],
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "tn": 5,
+    "ambiguous": 0,
+    "confusion": {
+      "bill": {
+        "bill": 10,
+        "non_bill": 0,
+        "ambiguous": 0,
+        "error": 0
+      },
+      "non_bill": {
+        "bill": 0,
+        "non_bill": 5,
+        "ambiguous": 0,
+        "error": 0
+      }
+    }
+  },
+  "fields": {
+    "merchant": {
+      "correct": 10,
+      "evaluated": 10,
+      "accuracy": 1,
+      "ci95": [
+        0.722,
+        1
+      ]
+    },
+    "date": {
+      "correct": 10,
+      "evaluated": 10,
+      "accuracy": 1,
+      "ci95": [
+        0.722,
+        1
+      ]
+    },
+    "total": {
+      "correct": 10,
+      "evaluated": 10,
+      "accuracy": 1,
+      "ci95": [
+        0.722,
+        1
+      ]
+    },
+    "category": {
+      "correct": 10,
+      "evaluated": 10,
+      "accuracy": 1,
+      "ci95": [
+        0.722,
+        1
+      ]
+    },
+    "allRequired": {
+      "correct": 10,
+      "evaluated": 10,
+      "accuracy": 1,
+      "ci95": [
+        0.722,
+        1
+      ]
+    }
+  },
+  "latencyMs": {
+    "mean": 1467,
+    "median": 1350,
+    "p95": 2582,
+    "max": 3274
+  },
+  "reviewBehaviour": {
+    "wrongValues": 0,
+    "wrongFlagged": 0,
+    "wrongAcceptedSilently": 0,
+    "wrongFlaggedRate": null,
+    "correctValues": 40,
+    "correctFlagged": 4,
+    "unnecessaryReviewRate": 0.1
+  },
+  "vlmCalls": 0,
+  "apiFailures": 0,
+  "estimatedCostUsd": null,
+  "definitions": {
+    "classificationAccuracy": "(correct bill/non-bill decisions) / images; ambiguous counts as incorrect",
+    "precision": "TP / (TP + FP), positive class = bill",
+    "recall": "TP / (TP + FN)",
+    "f1": "2PR / (P + R)",
+    "merchant": "normalised match: case/punctuation/legal-suffix insensitive, containment (≥4 chars) or similarity ≥ 0.85",
+    "date": "exact ISO date after normalising the ground truth",
+    "total": "absolute difference ≤ 0.01",
+    "category": "case-insensitive exact match; abstaining (Unknown) counts as incorrect",
+    "allRequired": "merchant, date and total all correct for a bill",
+    "ci95": "Wilson score interval",
+    "reviewBehaviour": "a value is \"flagged\" when its review state is anything other than high_confidence"
+  }
+}

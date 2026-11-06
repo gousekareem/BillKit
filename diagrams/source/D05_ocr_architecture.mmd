@@ -1,0 +1,11 @@
+%% BillKit — D05 ocr architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  A["Corrected page"] --> B["Greyscale · contrast stretch · sharpen · upscale if narrow"]
+  B --> C["tesseract.js scheduler\nworker pool, eng model from npm"]
+  C --> D["PSM 4 recognition"]
+  D --> E{"≥ 6 solid words?"}
+  E -- no --> F["Try 90° / 180° / 270°\nkeep best quick score"]
+  F --> G
+  E -- yes --> G["Blocks → lines → words\nbbox · confidence 0..1"]
+  G --> H["Row grouping by vertical overlap\nreading order top→bottom, left→right"]
+  H --> I["OcrPage: words, lines, text, mean confidence, rotation"]

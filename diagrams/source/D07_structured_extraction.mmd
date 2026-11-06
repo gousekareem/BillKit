@@ -1,0 +1,10 @@
+%% BillKit — D07 structured extraction · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  L["LayoutAnalysis"] --> M["Merchant\nlabel → header scoring → known brands"]
+  L --> DT["Dates\nlabelled > header; due/expiry excluded;\nambiguity resolved by other dates"]
+  L --> AMT["Amounts by label priority\nGrand Total > Net/Payable > Total\nSubtotal · Tax parts · Discount · Service · Tip · Round-off · Paid · Balance"]
+  L --> ID["Invoice / receipt no · GSTIN · phone · payment method"]
+  L --> LI["Line items\nqty × price = total check"]
+  M & DT & AMT & ID & LI --> RAW["RawExtraction\nvalue · status · ruleScore · ocrConfidence · evidence · alternatives"]
+  V[["VLM output\nzod-validated"]] -.-> MG["Merge"]
+  RAW --> MG --> F["Typed fields\nschema billkit.extraction/1.0"]

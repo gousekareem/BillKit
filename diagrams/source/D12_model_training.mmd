@@ -1,0 +1,14 @@
+%% BillKit — D12 model training · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  C["Config YAML"] --> P["Prepare data: manifests"]
+  P --> CHK{"Enough labelled data?"}
+  CHK -- no --> STOP["Stop: report 'not executed'\nno fake logs"]
+  CHK -- yes --> TR["Train on train split\n(+ augmented train copies)"]
+  TR --> VA["Validate each epoch\nearly stopping"]
+  VA --> SEL["Select best checkpoint"]
+  SEL --> CAL["Fit temperature / calibration on validation"]
+  CAL --> TE["Evaluate ONCE on independent test split"]
+  TE --> LOG["experiment_log.csv + report JSON"]
+  LOG --> DEC{"Better than current?"}
+  DEC -- yes --> EXP["Export: JSON (categoriser) / ONNX (classifier)"]
+  DEC -- no --> KEEP["Keep current model"]

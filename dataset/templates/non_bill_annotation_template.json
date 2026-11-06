@@ -1,0 +1,12 @@
+{
+  "image_id": "nb_000045",
+  "document_class": "letter_or_form",
+  "is_bill": false,
+  "annotation_status": "draft",
+  "annotator": "annotator_01",
+  "annotated_at": "2026-11-06",
+  "fields": {},
+  "conditions": [],
+  "difficulty": "easy",
+  "notes": "EXAMPLE. Non-bill annotations must not contain merchant/date/total values."
+}

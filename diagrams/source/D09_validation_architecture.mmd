@@ -1,0 +1,12 @@
+%% BillKit — D09 validation architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  IN["Values: AI proposal OR user-approved"] --> REQ["Required fields present"]
+  IN --> AR["Arithmetic: try interpretations\nstandard · discount pre-applied · tax-inclusive · no round-off"]
+  IN --> PL["Plausibility: negative/zero/huge totals, tax > total, discount > subtotal"]
+  IN --> LI["Line items sum & qty×price"]
+  IN --> PB["Paid + balance = total"]
+  IN --> DT["Dates: valid calendar, not future, not < 2000, due ≥ bill date, ambiguity"]
+  IN --> CU["Currency ISO code"]
+  REQ & AR & PL & LI & PB & DT & CU --> REP["Report: passed / needs_review / failed\nissues + checks + per-field status"]
+  REP --> UI["Live in review UI\n(same code in browser)"]
+  REP --> SRV["Server re-validation before save\nfailed → 422 · warnings → 409 until acknowledged"]

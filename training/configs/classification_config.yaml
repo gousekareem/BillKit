@@ -1,0 +1,33 @@
+# Bill / non-bill image classifier (transfer learning). NOT TRAINED in this delivery — no licensed labelled data was available.
+model:
+  architecture: mobilenet_v3_small        # small, fast on CPU/mobile, Apache-2.0 torchvision weights
+  pretrained_weights: IMAGENET1K_V1
+  num_classes: 2
+  class_names: [bill, non_bill]
+input:
+  size: 224
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+train:
+  epochs: 15
+  batch_size: 32
+  optimizer: adamw
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  freeze_backbone_epochs: 3
+  early_stopping_patience: 4
+  loss: cross_entropy
+  label_smoothing: 0.05
+  seed: 20261106
+augmentation:
+  enabled: true
+  rotation_degrees: 8
+  perspective: 0.08
+  brightness: 0.35
+  contrast: 0.30
+  blur_sigma: [0.1, 1.5]
+  jpeg_quality: [45, 95]
+  grayscale_probability: 0.15
+output:
+  checkpoint_dir: training/checkpoints/classifier
+  onnx_path: training/checkpoints/classifier/billkit_classifier.onnx

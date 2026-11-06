@@ -1,0 +1,13 @@
+%% BillKit — D24 project lifecycle · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  REQ["Requirements & HR brief"] --> DES["Design: architecture · schema · UI system"]
+  DES --> DEV["Build: shared · ai · backend · website"]
+  DEV --> TEST["Unit · integration · e2e · axe · lint · typecheck"]
+  TEST --> DATA["Collect consented real images\nannotate · validate"]
+  DATA --> EVAL["Evaluate (HR 20 + larger test set)"]
+  EVAL --> TRAIN["Train where justified\n(categoriser now; classifier when data exists)"]
+  TRAIN --> REG["Register model versions"]
+  REG --> REL["Release: build · deploy behind HTTPS"]
+  REL --> MON["Monitor: job metrics · corrections by field"]
+  MON --> IMP["Improve: reviewed corrections → dataset · prompt versions · rules"]
+  IMP --> TEST

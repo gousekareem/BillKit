@@ -1,0 +1,9 @@
+%% BillKit — W09 api communication · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  C["Component"] --> S["services/api.ts request()"]
+  S -->|credentials same-origin\nX-BillKit-CSRF on writes| F["fetch"]
+  F -->|ok| J["JSON"] --> CACHE{"offlineKey?"} -->|yes| IDB[("IndexedDB")]
+  F -->|HTTP error| E["ApiError status/code/message/fields"]
+  F -->|network failure| N{"offline copy?"}
+  N -- yes --> IDB --> C
+  N -- no --> E2["ApiError network"]

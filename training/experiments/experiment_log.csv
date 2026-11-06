@@ -1,0 +1,4 @@
+experiment_id,date,task,dataset,config,model_version,metric,value,notes
+CAT-2026-11-06,2026-11-06,categorisation,training/categorisation/data/seed_examples.csv,training/configs/categorisation_config.yaml,keyword_rules,cv_macro_f1,0.9755,synthetic seed data; grouped CV
+CAT-2026-11-06,2026-11-06,categorisation,training/categorisation/data/seed_examples.csv,training/configs/categorisation_config.yaml,billkit-tfidf-lr-2026-11-06,cv_macro_f1,0.9897,synthetic seed data; grouped CV
+CAT-2026-11-06,2026-11-06,categorisation,training/categorisation/data/seed_examples.csv,training/configs/categorisation_config.yaml,multinomial_nb,cv_macro_f1,0.9722,synthetic seed data; grouped CV

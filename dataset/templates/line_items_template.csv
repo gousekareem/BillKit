@@ -1,0 +1,3 @@
+image_id,position,description,quantity,unit_price,line_total,notes
+rb_000123,1,Masala dosa,2,120.00,240.00,EXAMPLE
+rb_000123,2,Filter coffee,2,70.00,140.00,EXAMPLE

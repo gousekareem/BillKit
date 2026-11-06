@@ -1,0 +1,17 @@
+%% BillKit — D11 dataset lifecycle · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  A["Raw images\nconsented / licensed"] --> B["Redaction of personal data"]
+  B --> C["Manifest scan\nvalidate_dataset.py --scan"]
+  C --> D["Annotation\nJSON/CSV templates"]
+  D --> E["Validation\nschema · contradictions · duplicates · leakage"]
+  E --> F["Group-aware split\nsplit_dataset.py · seed"]
+  F --> G["Augment TRAIN only\naugment.py"]
+  G --> H["Training"]
+  F --> I["Validation set → model selection / calibration"]
+  F --> J["Test set → final metrics"]
+  H --> K["Evaluation reports"]
+  I --> K
+  J --> K
+  K --> L["Model registry\nai/models/registry.json"]
+  L --> M["Deployment → backend inference"]
+  HR[("HR 20 images")] -. never used for training .-> X((excluded))

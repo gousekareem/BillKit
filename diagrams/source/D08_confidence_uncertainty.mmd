@@ -1,0 +1,16 @@
+%% BillKit — D08 confidence uncertainty · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  O["1. OCR confidence\nTesseract word confidence"] --> H
+  R["2. Rule strength\ndesign constant per label rule"] --> H
+  M["3. Model-reported confidence\nrecorded only, never used as probability"] -.-> S["signals"]
+  A["Agreement: agree / disagree / model-only verified?"] --> H
+  V["4. Validation: pass / warn / fail\n+ arithmetic corroboration"] --> H
+  H["Heuristic score 0..1"] --> C{"Calibration table registered\nand bin n ≥ 10?"}
+  C -- yes --> CAL["Calibrated estimate\nconfidenceKind = calibrated"]
+  C -- no --> HEU["Heuristic score\nconfidenceKind = heuristic"]
+  CAL --> T{"≥ user review threshold?"}
+  HEU --> T
+  T -- yes --> HI["High confidence"]
+  T -- no --> NR["Needs review"]
+  V -->|warn/fail| VW["Validation warning"]
+  X["Missing value"] --> MI["Missing"]

@@ -1,0 +1,125 @@
+/*
+ * BillKit design tokens — © 2026 Shaik Gouse Kareem. All rights reserved.
+ * Colour pairs were checked for WCAG 2.2 AA text contrast (≥ 4.5:1) against their backgrounds.
+ */
+:root {
+  /* Brand */
+  --bk-teal-50: #f0fdfa;
+  --bk-teal-100: #ccfbf1;
+  --bk-teal-200: #99f6e4;
+  --bk-teal-500: #14b8a6;
+  --bk-teal-600: #0d9488;
+  --bk-teal-700: #0f766e;
+  --bk-teal-800: #115e59;
+  --bk-teal-900: #134e4a;
+  --bk-amber-400: #fbbf24;
+  --bk-amber-500: #f59e0b;
+  --bk-ink: #0b1f2a;
+
+  /* Semantic (light) */
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+  --color-text: #0b1f2a;
+  --color-text-muted: #475569;
+  --color-text-subtle: #64748b;
+  --color-primary: var(--bk-teal-700);
+  --color-primary-hover: var(--bk-teal-800);
+  --color-primary-contrast: #ffffff;
+  --color-primary-soft: var(--bk-teal-50);
+  --color-accent: var(--bk-amber-500);
+  --color-focus: #2563eb;
+
+  /* Status (foreground on soft background) */
+  --status-high-fg: #166534;
+  --status-high-bg: #dcfce7;
+  --status-review-fg: #92400e;
+  --status-review-bg: #fef3c7;
+  --status-missing-fg: #334155;
+  --status-missing-bg: #e2e8f0;
+  --status-warning-fg: #9a3412;
+  --status-warning-bg: #ffedd5;
+  --status-error-fg: #991b1b;
+  --status-error-bg: #fee2e2;
+  --status-user-fg: #5b21b6;
+  --status-user-bg: #ede9fe;
+  --status-info-fg: #1e40af;
+  --status-info-bg: #dbeafe;
+
+  /* Typography */
+  --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  --text-5xl: clamp(2.4rem, 1.6rem + 3.4vw, 4rem);
+
+  /* Spacing (4px grid) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* Shape & depth */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 999px;
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06);
+  --shadow-md: 0 4px 14px rgb(15 23 42 / 0.08);
+  --shadow-lg: 0 18px 40px rgb(15 23 42 / 0.12);
+
+  --container: 1160px;
+  --sidebar-w: 248px;
+  --header-h: 64px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --color-bg: #0b1220;
+  --color-surface: #111a2b;
+  --color-surface-2: #172236;
+  --color-border: #22314a;
+  --color-border-strong: #33455f;
+  --color-text: #e6edf6;
+  --color-text-muted: #a9b6c8;
+  --color-text-subtle: #8b9ab0;
+  --color-primary: #2dd4bf;
+  --color-primary-hover: #5eead4;
+  --color-primary-contrast: #042f2e;
+  --color-primary-soft: #0f2e2c;
+  --color-focus: #60a5fa;
+  --status-high-fg: #86efac;
+  --status-high-bg: #12301f;
+  --status-review-fg: #fcd34d;
+  --status-review-bg: #3a2a0a;
+  --status-missing-fg: #cbd5e1;
+  --status-missing-bg: #243247;
+  --status-warning-fg: #fdba74;
+  --status-warning-bg: #3b1d0c;
+  --status-error-fg: #fca5a5;
+  --status-error-bg: #3b1212;
+  --status-user-fg: #c4b5fd;
+  --status-user-bg: #2a1f4d;
+  --status-info-fg: #93c5fd;
+  --status-info-bg: #13274a;
+  --shadow-md: 0 4px 14px rgb(0 0 0 / 0.35);
+  --shadow-lg: 0 18px 40px rgb(0 0 0 / 0.45);
+  color-scheme: dark;
+}

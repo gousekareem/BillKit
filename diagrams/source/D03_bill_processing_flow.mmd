@@ -1,0 +1,33 @@
+%% BillKit — D03 bill processing flow · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  S(["Upload"]) --> V{"Valid file type & size?"}
+  V -- no --> X1["Reject: unsupported / too large / corrupted\nclear message, nothing stored"]
+  V -- yes --> Q["Quality check"]
+  Q --> QW{"Severe issues?"}
+  QW -- yes --> W1["Warn + retake tips\nprocessing continues"]
+  QW -- no --> P
+  W1 --> P["Preprocess + OCR"]
+  P --> OC{"OCR produced text?"}
+  OC -- no --> NB["Needs better image"]
+  OC -- yes --> C{"Bill?"}
+  C -- not bill --> RJ["Polite rejection"] --> OV{"User confirms it is a bill?"}
+  OV -- yes --> P
+  OV -- no --> END1(["Discard / upload another"])
+  C -- ambiguous --> AMB["Ask user to confirm"] --> E
+  C -- bill --> E["Extract fields"]
+  E --> MF{"Required fields missing?"}
+  MF -- yes --> FLAG1["Mark Missing\nnever guessed"]
+  MF -- no --> VA
+  FLAG1 --> VA{"Validation warnings?"}
+  VA -- yes --> FLAG2["Validation warning"]
+  VA -- no --> LC
+  FLAG2 --> LC{"Score below review threshold?"}
+  LC -- yes --> FLAG3["Needs review"]
+  LC -- no --> HC["High confidence"]
+  FLAG3 --> R["User reviews"]
+  HC --> R
+  R --> COR["User corrects / confirms flagged fields"]
+  COR --> AP{"Approve & save"}
+  AP -->|warnings or duplicates| ACK["Explicit acknowledgement"]
+  ACK --> SV
+  AP --> SV(["Saved verified bill"])

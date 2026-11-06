@@ -1,0 +1,7 @@
+%% BillKit — W13 responsive layout · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart TD
+  W{"Viewport width"} -->|> 960px| DESK["Marketing: inline nav\nApp: 248px sidebar + top search"]
+  W -->|≤ 960px| TAB["Marketing: hamburger menu"]
+  W -->|≤ 900px| MOB["App: bottom navigation (5 targets ≥ 44px) · no sidebar"]
+  W -->|≤ 1000px| REV["Review: image above form, sticky actions above bottom nav"]
+  ALL["All widths: fluid grids auto-fit/minmax · no horizontal overflow (e2e-checked)"]

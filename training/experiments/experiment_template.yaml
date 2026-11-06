@@ -1,0 +1,19 @@
+# Copy for each experiment; record the actual values used — never invent results.
+experiment_id: EXP-YYYYMMDD-NN
+task: categorisation | classification | ocr | extraction
+date: YYYY-MM-DD
+author: ""
+hypothesis: ""
+dataset:
+  manifest: dataset/manifests/train_manifest.csv
+  version: ""
+  train_examples: 0
+  validation_examples: 0
+  test_examples: 0
+  licence: ""
+config_file: ""
+hardware: ""
+results:
+  metrics_file: ""
+  notes: ""
+decision: adopt | reject | needs_more_data

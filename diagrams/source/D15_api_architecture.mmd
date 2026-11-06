@@ -1,0 +1,11 @@
+%% BillKit — D15 api architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  W["Web app"] --> AUTH["/api/auth/*\nregister · login · logout · me · forgot/reset · change-password · profile · account"]
+  W --> SCANS["/api/scans\nPOST upload · GET status/result · cancel · reprocess · DELETE · images"]
+  W --> BILLS["/api/bills\nPOST save · list/search · GET · PUT · DELETE · image · export.csv/json"]
+  W --> MISC["/api/settings · /api/categories · /api/analytics/summary · /api/corrections/summary"]
+  W --> PUB["/api/health · /api/config/public · /api/contact"]
+  ADM["Admin user"] --> ADMIN["/api/admin/metrics (role=admin)"]
+  SCANS --> QUEUE["Processing queue"] --> PIPE["AI pipeline"] -.-> VLM[["Anthropic API"]]
+  AUTH & SCANS & BILLS & MISC & PUB & ADMIN --> DB[("SQLite")]
+  SCANS & BILLS --> FS[("Image files")]

@@ -1,0 +1,24 @@
+{
+  "total_images": 0,
+  "bill_images": 0,
+  "non_bill_images": 0,
+  "by_subclass": {},
+  "by_difficulty": {},
+  "by_source": {},
+  "formats": {},
+  "dimensions": {
+    "min": null,
+    "max": null
+  },
+  "corrupted_files": [],
+  "exact_duplicate_files": 0,
+  "near_duplicate_pairs": 0,
+  "missing_annotations": 0,
+  "class_imbalance_ratio": null,
+  "split_distribution": {
+    "train": {},
+    "validation": {},
+    "test": {},
+    "": {}
+  }
+}

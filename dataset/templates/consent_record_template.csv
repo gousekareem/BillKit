@@ -1,0 +1,2 @@
+image_id,contributor_reference,consent_date,consent_scope,may_be_redistributed,redaction_done_by,redaction_checked_by,withdrawal_requested,notes
+rb_000123,C-0007,2026-11-01,"internal development and evaluation only",no,annotator_01,reviewer_02,no,EXAMPLE — store the signed consent form outside the repository

@@ -1,0 +1,20 @@
+%% BillKit — D16 authentication · © 2026 Shaik Gouse Kareem. All rights reserved.
+sequenceDiagram
+  participant B as Browser
+  participant A as API
+  participant D as SQLite
+  B->>A: POST /api/auth/register {name,email,password} + X-BillKit-CSRF
+  A->>A: zod validation · Argon2id hash (m=19MiB,t=2)
+  A->>D: INSERT user
+  A->>D: INSERT session(id = sha256(random 256-bit token))
+  A-->>B: Set-Cookie bk_session (HttpOnly, SameSite=Lax, Secure in prod)
+  B->>A: GET /api/bills (cookie)
+  A->>D: lookup sha256(token) → user (expiry check)
+  A->>D: SELECT … WHERE user_id = ?
+  A-->>B: only this user's data
+  B->>A: POST /api/auth/forgot-password
+  A->>D: store sha256(reset token), 30-min expiry
+  A-->>B: same response whether account exists or not
+  Note over A: email via SMTP if configured
+  B->>A: POST /api/auth/reset-password {token,password}
+  A->>D: mark token used · delete all sessions · update hash

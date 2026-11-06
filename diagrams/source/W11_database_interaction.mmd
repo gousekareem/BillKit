@@ -1,0 +1,10 @@
+%% BillKit — W11 database interaction · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  UI["Pages"] --> API
+  API -->|users/sessions| U[("users · sessions")]
+  API -->|scans + images| S[("scans · bill_images")]
+  API -->|bills| B[("bills · line_items")]
+  API -->|corrections| C[("corrections")]
+  API -->|analytics aggregate SQL\nper currency, no FX| B
+  QUEUE["Processing queue"] --> S
+  QUEUE --> M[("job_metrics")]

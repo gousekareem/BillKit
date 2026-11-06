@@ -1,0 +1,11 @@
+%% BillKit — W01 website architecture · © 2026 Shaik Gouse Kareem. All rights reserved.
+flowchart LR
+  subgraph SPA["Vite + React 19 SPA"]
+    PUB["Public pages\nprerendered HTML for SEO"]
+    APP["/app/* authenticated pages\nlazy-loaded chunks"]
+    SVC["services: api · auth · toast · offline · theme"]
+  end
+  PUB --> SVC
+  APP --> SVC
+  SVC -->|fetch /api, same origin| API["Fastify backend"]
+  SW["Service worker"] --> SPA
